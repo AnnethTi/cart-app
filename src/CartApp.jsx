@@ -4,7 +4,7 @@ import { CartView } from "./components/CartView";
 import { CatalogView } from "./components/CatalogView";
 
 
-const initialCartItems = []
+const initialCartItems = JSON.parse(sessionStorage.getItem('cart')) || []
 
 export const CartApp = () => {
 
