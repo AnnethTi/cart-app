@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { CardView } from './CardView'
+import { ProductCardView } from './ProductCardView'
 import { getProducts } from '../services/productService'
 
-export const CatalogView = () => {
+export const CatalogView = ( {handler}) => {
     const [products, setProducts] = useState([])
 
     useEffect(() => {
@@ -12,7 +12,15 @@ export const CatalogView = () => {
     return (
         <div className="row">
             {products.map(prod => (
-                <CardView key={prod.id} prod={prod}/>
+                <div key={prod.id} className="col-4 my-2">
+                    <ProductCardView
+                    handler = {handler}
+                    id = {prod.id}
+                    name = {prod.name}
+                    price = {prod.price}
+                    description = {prod.description}
+                    />
+                </div>
             ))}
         </div>
     )
